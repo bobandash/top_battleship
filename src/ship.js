@@ -8,10 +8,19 @@ export default class Ship {
     }
     this._length = length;
     this._numOfTimesHit = 0;
+    this._id = 0;
   }
 
   get length(){
     return this._length;
+  }
+
+  get id(){
+    return this._id;
+  }
+
+  set id(newId){
+    this._id = newId;
   }
 
   hit(){

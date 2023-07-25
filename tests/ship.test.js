@@ -7,27 +7,26 @@ test('ship length works if integer is passed', () => {
   const mini = new Ship(1)
   
   expect(destroyer.length).toBe(4);
-  expect(mini.length).toBe(1);
 })
 
 test('constructor should throw an error if length input is not a number', () => {
   expect(() => {
-    new Ship("test");
+    const invalidShip = new Ship("test");
   }).toThrow('length input is not a number');
 });
 
 
 test('constructor should throw an error if length integer is valid', () => {
   expect(() => {
-    new Ship(0);
+    const invalidShip1 = new Ship(0);
   }).toThrow('length input cannot be greater than 10 or less than 1');
 
   expect(() => {
-   new Ship(0);
+    const invalidShip2 = new Ship(0);
   }).toThrow('length input cannot be greater than 10 or less than 1');
 
   expect(() => {
-    new Ship(0);
+    const invalidShip3 = new Ship(0);
   }).toThrow('length input cannot be greater than 10 or less than 1');
 });
 

@@ -11,7 +11,6 @@ export default class Ship {
     this.id = 0;
   }
 
-
   setID(newId){
     this.id = newId;
   }

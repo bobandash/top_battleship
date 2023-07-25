@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src = "dist/bundle.js" defer></script>
 </head>
-<body>
-  <h1>Test</h1>
+<body class = "start-screen">
+  <div class = "container">
+    <div class = "logo-container"><img class = "battleship-logo" src = "/assets/title.png"></div>
+    <div class = "name-select">
+      <h2 class="description-text">Choose Your Name:</h2>
+      <input id = "username" autocomplete = "off">
+    </div>
+    <div>
+      <button id = "start-game" class = "next-screen-button">Start Game </button>
+    </div>
+  </div>
 </body>
 </html>

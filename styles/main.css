@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --mobile-font-size: 30px;
+  --desktop-font-size: 52px;
+  --mobile-text-shadow: 
+  -3px -3px 0 #000,
+  0   -3px 0 #000,
+  3px -3px 0 #000,
+  3px  0   0 #000,
+  3px  3px 0 #000,
+  0    3px 0 #000,
+ -3px  3px 0 #000,
+ -3px  0   0 #000;
+
+  --desktop-text-shadow:
+  -5px -5px 0 #000,
+  0   -5px 0 #000,
+  5px -5px 0 #000,
+  5px  0   0 #000,
+  5px  5px 0 #000,
+  0    5px 0 #000,
+ -5px  5px 0 #000,
+ -5px  0   0 #000;
+}
+
+* {
+  font-family: 'Inter', 'Times New Roman', Times, serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+}
+
+button:hover, *:not(input):hover{
+  cursor: pointer;
+}
+
+body.start-screen {
+  background-image: url('../assets/water-phone-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+
+.container {
+  width: 80%;
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+.battleship-logo {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.description-text {
+  color: white;
+  font-size: var(--mobile-font-size);
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow:var(--mobile-text-shadow);
+}
+
+#username {
+  width: 100%;
+  opacity: 70%;
+  font-size: var(--mobile-font-size);
+  padding: 10px 0px;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.next-screen-button {
+  width: 100%;
+  font-size: var(--mobile-font-size);
+  padding: 10px 0px;
+  text-transform: uppercase;
+  background-color: red;
+  border: 3px solid black;
+  font-weight: bold;
+  color: white;
+  text-shadow: var(--mobile-text-shadow);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.next-screen-button:hover {
+  background-color: darkred;;
+}
+
+
+/* margins to separate the elements for start screen */ 
+.start-screen .container div:first-child {
+  margin-bottom: 50px;
+}
+
+.start-screen .container div:last-child {
+  margin-top: 50px;
+}
+
+
+@media screen and (min-width: 850px){
+  body.start-screen {
+    background-image: url('../assets/water-desktop-bg.jpg');
+  }
+
+
+  .container {
+    justify-content: space-evenly;
+  }
+
+  .start-screen .container div:first-child {
+    margin-bottom: 50px;
+  }
+  
+  .start-screen .container div:last-child {
+    margin-bottom: 10%;
+  }
+  
+
+  #username, .description-text, .next-screen-button  {
+    font-size: var(--desktop-font-size);
+  }
+
+  #username {
+    opacity: 100%;
+    margin-top: 10px;
+  }
+  .description-text, .next-screen-button  {
+    text-shadow: var(--desktop-text-shadow);
+  }
+
+  .next-screen-button {
+    float: right;
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

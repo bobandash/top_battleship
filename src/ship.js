@@ -6,29 +6,22 @@ export default class Ship {
     if(length > 10 || length <= 0){
       throw new Error("length input cannot be greater than 10 or less than 1")
     }
-    this._length = length;
-    this._numOfTimesHit = 0;
-    this._id = 0;
+    this.length = length;
+    this.numOfTimesHit = 0;
+    this.id = 0;
   }
 
-  get length(){
-    return this._length;
-  }
 
-  get id(){
-    return this._id;
-  }
-
-  set id(newId){
-    this._id = newId;
+  setID(newId){
+    this.id = newId;
   }
 
   hit(){
-    this._numOfTimesHit += 1;
+    this.numOfTimesHit += 1;
   }
 
   isSunk(){
-    if(this._length === this._numOfTimesHit){
+    if(this.length === this.numOfTimesHit){
       return true;
     }
     return false;

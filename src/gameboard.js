@@ -10,9 +10,9 @@ export default class Gameboard {
         board.set(new Coordinates(i,j).toString(), SHIP_STATUS.EMPTY);
       }
     }
-    this._board = board;
-    this._ships_placed = [];
-    this._ships_sunk = [];
+    this.board = board;
+    this.ships_placed = [];
+    this.ships_sunk = [];
   }
   
 
@@ -26,7 +26,7 @@ export default class Gameboard {
       const coordinateToCheckStringified = (direction === ORIENTATION.x ? new Coordinates(startingCoordinateX + i, startingCoordinateY).toString() : 
         new Coordinates(startingCoordinateX, startingCoordinateY + i).toString());
       
-        if(this._board.get(coordinateToCheckStringified) !== SHIP_STATUS.EMPTY){
+        if(this.board.get(coordinateToCheckStringified) !== SHIP_STATUS.EMPTY){
           return true;
         }
     }
@@ -34,7 +34,7 @@ export default class Gameboard {
   }
 
 
-  isCoordinateValid({ship, startingCoordinate, direction}){
+  static isCoordinateValid({ship, startingCoordinate, direction}){
     const startingCoordinateX = startingCoordinate.x;
     const startingCoordinateY = startingCoordinate.y;
     const shipLength = ship.length;
@@ -61,7 +61,7 @@ export default class Gameboard {
 
 
   place({ship, startingCoordinate, direction = ORIENTATION.y}){
-    if(!this.isCoordinateValid({ship, startingCoordinate, direction})){
+    if(!Gameboard.isCoordinateValid({ship, startingCoordinate, direction})){
       throw new Error('Coordinate is invalid');
     }
 
@@ -72,41 +72,39 @@ export default class Gameboard {
     const startingCoordinateX = startingCoordinate.x;
     const startingCoordinateY = startingCoordinate.y;
     const shipLength = ship.length;    
-    const shipID = this._ships_placed.length;
+    const shipID = this.ships_placed.length;
     ship.id = shipID;
 
     for(let i = 0; i < shipLength; i+=1){
       const coordinateToAdd = (direction === ORIENTATION.x ? new Coordinates(startingCoordinateX + i, startingCoordinateY).toString() : 
         new Coordinates(startingCoordinateX, startingCoordinateY + i).toString());
-      this._board.set(coordinateToAdd, ship.id);
+      this.board.set(coordinateToAdd, ship.id);
     }
-    this._ships_placed.push(ship);
+    this.ships_placed.push(ship);
   }
 
   receiveAttack(coordinate){
     const coordinateStringified = coordinate.toString();
-    const positionValue = this._board.get(coordinateStringified);
+    const positionValue = this.board.get(coordinateStringified);
     switch(positionValue){
       case SHIP_STATUS.HIT:
       case SHIP_STATUS.MISSED:
         throw new Error("Coordinate has already been attacked before");
-        break;
       case SHIP_STATUS.EMPTY:
-        this._board.set(coordinateStringified, SHIP_STATUS.MISSED);
+        this.board.set(coordinateStringified, SHIP_STATUS.MISSED);
         break;
-      //There's a ship at this location
+      // There's a ship at this location
       default:
-        const shipID = positionValue;
-        this._ships_placed[shipID].hit();
-        this._board.set(coordinateStringified, SHIP_STATUS.HIT);
-        if(this._ships_placed[shipID].isSunk()){
-          this._ships_sunk.push(this._ships_placed[shipID]);
+        this.ships_placed[positionValue].hit();
+        this.board.set(coordinateStringified, SHIP_STATUS.HIT);
+        if(this.ships_placed[positionValue].isSunk()){
+          this.ships_sunk.push(this.ships_placed[positionValue]);
         }
     }
   }
 
   allShipsSunk(){
-    if(this._ships_placed.length === this._ships_sunk.length){
+    if(this.ships_placed.length === this.ships_sunk.length){
       return true;
     }
     return false;

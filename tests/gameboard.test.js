@@ -65,7 +65,7 @@ describe('Place Ships', () =>{
         testGameboard.place({ship: testShip, startingCoordinate: coordinate1, direction: ORIENTATION.y});
         for(let i = 0; i < testShip.length; i+=1){
           const coordinateToCheckStringified = new Coordinates(coordinate1.x, coordinate1.y + i).toString();
-          const gameboardTileStatus = testGameboard._board.get(coordinateToCheckStringified);
+          const gameboardTileStatus = testGameboard.board.get(coordinateToCheckStringified);
           expect(gameboardTileStatus).not.toBe(SHIP_STATUS.EMPTY);
         }
     });
@@ -74,7 +74,7 @@ describe('Place Ships', () =>{
         testGameboard.place({ship: testShip, startingCoordinate: coordinate2, direction: ORIENTATION.x});
         for(let i = 0; i < testShip2.length; i+=1){
           const coordinateToCheckStringified = new Coordinates(coordinate2.x + i, coordinate2.y).toString();
-          const gameboardTileStatus = testGameboard._board.get(coordinateToCheckStringified);
+          const gameboardTileStatus = testGameboard.board.get(coordinateToCheckStringified);
           expect(gameboardTileStatus).not.toBe(SHIP_STATUS.EMPTY);
         }
     })
@@ -94,7 +94,7 @@ describe("receive attack and all sunk gameboard", () => {
   test('missed works', () => {
     const missedCoordinate = new Coordinates(10,10)
     gameboard.receiveAttack(missedCoordinate);
-    expect(gameboard._board.get(missedCoordinate.toString())).toBe(SHIP_STATUS.MISSED);
+    expect(gameboard.board.get(missedCoordinate.toString())).toBe(SHIP_STATUS.MISSED);
   })
 
   test('hit works', () => {

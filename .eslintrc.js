@@ -8,6 +8,12 @@ module.exports = {
     ],
     "overrides": [
     ],
+    "globals": {
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"

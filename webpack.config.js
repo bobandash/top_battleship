@@ -20,16 +20,8 @@ const path = require('path');
         type: 'asset/resource'
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
+        test: /\.(woff|woff2|ttf)$/,
+        type: 'asset/resource'
       }
     ],
   },

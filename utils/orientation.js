@@ -1,6 +1,6 @@
 const ORIENTATION = {
-  x: 'horizontal',
-  y: 'vertical'
+  x: 'Horizontal',
+  y: 'Vertical'
 }
 
 

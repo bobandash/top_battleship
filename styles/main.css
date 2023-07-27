@@ -33,11 +33,11 @@ html, body {
   margin: 0;
 }
 
-button:hover, *:not(input):hover{
+button:hover, div:not(.container){
   cursor: pointer;
 }
 
-body.start-screen {
+body.start-screen, body.place-ships-screen {
   background-image: url('../assets/water-phone-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,7 +47,7 @@ body.start-screen {
 
 .container {
   width: 80%;
-  max-width: 950px;
+  max-width: 650px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,6 @@ body.start-screen {
 
 #username {
   width: 100%;
-  opacity: 70%;
   font-size: var(--mobile-font-size);
   padding: 10px 0px;
   border: 3px solid black;
@@ -110,7 +109,7 @@ body.start-screen {
 }
 
 
-@media screen and (min-width: 850px){
+@media screen and (min-width: 650px){
   body.start-screen {
     background-image: url('../assets/water-desktop-bg.jpg');
   }
@@ -143,8 +142,114 @@ body.start-screen {
 
   .next-screen-button {
     float: right;
-    width: 50%;
     padding-left: 10px;
     padding-right: 10px;
   }
+}
+
+
+
+/* css for the place ships and attack ships screen */
+
+/* 
+<div class = "container">
+<div class="status"><h1>Bruce, Place Your Destroyer (3 Tiles)</h1></div>
+<div class = "grid-and-buttons-container">
+  <div class ="ships-grid">
+
+  </div>
+  <div class = "grid-buttons">
+    <button>Toggle Direction: X</button>
+  </div>
+  <div>
+    <button id = "start-game" class = "next-screen-button">Start Battle </button>
+  </div>
+</div>
+</div> */
+
+.place-ships-screen .container{
+  display: flex;
+  justify-content: center;
+}
+
+
+.status {
+  background-color: white;
+  border: 5px solid black;
+  text-align: center;
+  margin-bottom: 36px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  height: 20%;
+}
+
+.grid-buttons {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.grid-buttons button:first-child {
+  margin-left: auto;
+}
+
+.grid-buttons > button {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 15px;
+  background-color: white;
+}
+
+#start-game {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+
+.ships-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+  aspect-ratio: 1/1;
+  max-height: 60%;
+}
+
+.ships-grid > div {
+  height: 10%;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+
+@media screen and (min-width: 650px){
+  .ships-grid > div > svg {
+    font-size: 2em;
+  }
+
+}
+
+.grid-right-border {
+  border-right: 2px solid black !important;
+}
+
+.grid-left-border {
+  border-left: 2px solid black  !important;
+}
+
+.grid-top-border {
+  border-top: 2px solid black  !important;
+}
+
+.grid-bottom-border {
+  border-bottom: 2px solid black !important;
 }

@@ -1,19 +1,11 @@
 export default class Coordinates{
   constructor(x,y){
-    this._x = x;
-    this._y = y;
-  }
-
-  get x(){
-    return this._x;
-  }
-
-  get y() {
-    return this._y;
+    this.x = x;
+    this.y = y;
   }
 
   toString(){
-    return `{${this._x},${this._y}}`
+    return `{${this.x},${this.y}}`
   }
 
 }

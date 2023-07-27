@@ -24,7 +24,7 @@ export default class Gameboard {
 
     for(let i = 0; i < shipLength; i+=1){
       const coordinateToCheckStringified = (direction === ORIENTATION.x ? new Coordinates(startingCoordinateX + i, startingCoordinateY).toString() : 
-        new Coordinates(startingCoordinateX, startingCoordinateY + i).toString());
+        new Coordinates(startingCoordinateX, startingCoordinateY - i).toString());
       
         if(this.board.get(coordinateToCheckStringified) !== SHIP_STATUS.EMPTY){
           return true;
@@ -45,7 +45,7 @@ export default class Gameboard {
       endingCoordinateY = startingCoordinateY;
     } else {
       endingCoordinateX = startingCoordinateX;
-      endingCoordinateY = startingCoordinateY + shipLength - 1;     
+      endingCoordinateY = startingCoordinateY - shipLength + 1;     
     }
 
     if(startingCoordinateX <= 0 || startingCoordinateX > 10 || endingCoordinateX <= 0 || endingCoordinateX > 10){
@@ -60,7 +60,7 @@ export default class Gameboard {
   /* end helper functions for placing a ship */
 
 
-  place({ship, startingCoordinate, direction = ORIENTATION.y}){
+  place({ship, startingCoordinate, direction = ORIENTATION.x}){
     if(!Gameboard.isCoordinateValid({ship, startingCoordinate, direction})){
       throw new Error('Coordinate is invalid');
     }
@@ -77,7 +77,7 @@ export default class Gameboard {
 
     for(let i = 0; i < shipLength; i+=1){
       const coordinateToAdd = (direction === ORIENTATION.x ? new Coordinates(startingCoordinateX + i, startingCoordinateY).toString() : 
-        new Coordinates(startingCoordinateX, startingCoordinateY + i).toString());
+        new Coordinates(startingCoordinateX, startingCoordinateY - i).toString());
       this.board.set(coordinateToAdd, ship.id);
     }
     this.ships_placed.push(ship);

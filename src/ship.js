@@ -1,5 +1,5 @@
 export default class Ship {
-  constructor(length){
+  constructor(length, name){
     if(typeof length !== 'number'){
       throw new Error ("length input is not a number");
     }
@@ -9,6 +9,7 @@ export default class Ship {
     this.length = length;
     this.numOfTimesHit = 0;
     this.id = 0;
+    this.name = name;
   }
 
   setID(newId){

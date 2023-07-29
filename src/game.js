@@ -1,3 +1,8 @@
+import HumanPlayer from "./human-player";
+import AIPlayer from "./ai-player";
+import {setPlayer} from './datamanager'
+
+
 const Game = (() => {
   let isPlayerOneTurn = true;
 
@@ -16,7 +21,16 @@ const Game = (() => {
     return false;
   }
 
-  return {toggleTurn, getIsPlayerOneTurn, isOver};
+  function start(username){
+    setPlayer(new HumanPlayer(username), 1);
+    setPlayer(new AIPlayer, 2);
+    if(!getIsPlayerOneTurn()){
+      toggleTurn();
+    }
+  }
+
+
+  return {toggleTurn, getIsPlayerOneTurn, isOver, start};
 })();
 
 export default Game;

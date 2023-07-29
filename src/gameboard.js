@@ -98,7 +98,6 @@ export default class Gameboard {
           shipIndex = index;
         }
       })
-      console.log(this.ships_placed[shipIndex]);
       this.ships_placed[shipIndex].hit();
       this.board.set(coordinateStringified, createHitStatus(shipName));
       if(this.ships_placed[shipIndex].isSunk()){

@@ -9,10 +9,6 @@ function createHitStatus(shipName){
   return `${shipName} - ${SHIP_STATUS.HIT}`;
 }
 
-function getShipFromHitStatus(gridStatus){
-  return gridStatus.replace(` - ${SHIP_STATUS.HIT}`, '');
-}
-
 function getXFromStringifiedCoordinate(coordinate){
   const start = coordinate.indexOf("{") + 1;
   const end = coordinate.indexOf(","); 
@@ -26,4 +22,4 @@ function getYFromStringifiedCoordinate(coordinate){
   return coordinate.substring(start, end);
 }
 
-export {isHit, createHitStatus, getShipFromHitStatus, getXFromStringifiedCoordinate, getYFromStringifiedCoordinate};
+export {isHit, createHitStatus, getXFromStringifiedCoordinate, getYFromStringifiedCoordinate};

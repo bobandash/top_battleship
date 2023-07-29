@@ -100,7 +100,7 @@ const placeShipScreen = (() => {
   function renderPlaceStatusMessage(player, currentShip){
     const statusMessage = document.querySelector('.status > h1');
     if(currentShip === null) {
-      statusMessage.innerText = `${player.name}, Double Click to Change Orientation`;
+      statusMessage.innerText = `${player.name}, PREPARE FOR BATTLE!`;
       // TO-DO: add the double click functionality
       addStartBattleButton();
     }

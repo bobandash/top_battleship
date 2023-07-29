@@ -8,7 +8,7 @@ import Ship from '../src/ship'
 describe('Place Ships', () =>{
   describe ('invalid values for placing ships', () => {
     test('the coordinate is invalid (0,0)', () => {
-      const testShip = new Ship(5);
+      const testShip = new Ship(5, "Test1");
       const testGameboard = new Gameboard();
       const coordinateInvalid = new Coordinates(0,0);
       expect(()=> testGameboard.place({
@@ -18,7 +18,7 @@ describe('Place Ships', () =>{
     })
 
     test('the coordinate is invalid (-1,-10)', () => {
-      const testShip = new Ship(5);
+      const testShip = new Ship(5, "Test1");
       const testGameboard = new Gameboard();
       const coordinateInvalid = new Coordinates(-1,-10);
       expect(() => testGameboard.place({
@@ -28,8 +28,8 @@ describe('Place Ships', () =>{
     })
 
     test ('another ship is already placed at that starting coordinate', () => {
-      const testShip = new Ship(5);
-      const testShip2 = new Ship(3);
+      const testShip = new Ship(5, "Test1");
+      const testShip2 = new Ship(3, "Test2");
       const testGameboard = new Gameboard();
       const sameCoordinates = new Coordinates(1,1);
 
@@ -40,11 +40,11 @@ describe('Place Ships', () =>{
     })
 
     test ('part of the ship would intersect with another part of the ship', () => {
-      const testShip = new Ship(5);
-      const testShip2 = new Ship(3);
+      const testShip = new Ship(5, "Test1");
+      const testShip2 = new Ship(3, "Test2");
       const testGameboard = new Gameboard();
       const coordinate1 = new Coordinates(1,1);
-      const coordinate2 = new Coordinates(1, 5);
+      const coordinate2 = new Coordinates(5, 1);
 
       expect(() => {
         testGameboard.place({ship: testShip, startingCoordinate: coordinate1});      
@@ -55,16 +55,16 @@ describe('Place Ships', () =>{
 
 
   describe('placing ships for horizontal and vertical orientations works', () => {
-    const testShip = new Ship(5);
-    const testShip2 = new Ship(3);
+    const testShip = new Ship(5, "Test1");
+    const testShip2 = new Ship(3, "Test2")
     const testGameboard = new Gameboard();
-    const coordinate1 = new Coordinates(1,1);
+    const coordinate1 = new Coordinates(1,10);
     const coordinate2 = new Coordinates(5, 5);
 
     test('vertical orientation works', () => {
         testGameboard.place({ship: testShip, startingCoordinate: coordinate1, direction: ORIENTATION.y});
         for(let i = 0; i < testShip.length; i+=1){
-          const coordinateToCheckStringified = new Coordinates(coordinate1.x, coordinate1.y + i).toString();
+          const coordinateToCheckStringified = new Coordinates(coordinate1.x, coordinate1.y - i).toString();
           const gameboardTileStatus = testGameboard.board.get(coordinateToCheckStringified);
           expect(gameboardTileStatus).not.toBe(SHIP_STATUS.EMPTY);
         }
@@ -83,7 +83,7 @@ describe('Place Ships', () =>{
 
 
 describe("receive attack and all sunk gameboard", () => {
-  const ship1 = new Ship(1);
+  const ship1 = new Ship(1, "Test");
   const gameboard = new Gameboard();
   gameboard.place({
     ship: ship1,

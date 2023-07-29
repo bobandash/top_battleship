@@ -1,6 +1,7 @@
 import SHIP_STATUS from '../utils/ship-status';
 import Coordinates from '../utils/coordinates';
 import ORIENTATION from '../utils/orientation'
+import {isHit, createHitStatus} from "./helper-functions"
 
 export default class Gameboard {
   constructor(){
@@ -72,13 +73,11 @@ export default class Gameboard {
     const startingCoordinateX = startingCoordinate.x;
     const startingCoordinateY = startingCoordinate.y;
     const shipLength = ship.length;    
-    const shipID = this.ships_placed.length;
-    ship.id = shipID;
 
     for(let i = 0; i < shipLength; i+=1){
       const coordinateToAdd = (direction === ORIENTATION.x ? new Coordinates(startingCoordinateX + i, startingCoordinateY).toString() : 
         new Coordinates(startingCoordinateX, startingCoordinateY - i).toString());
-      this.board.set(coordinateToAdd, ship.id);
+      this.board.set(coordinateToAdd, ship.name);
     }
     this.ships_placed.push(ship);
   }
@@ -86,20 +85,25 @@ export default class Gameboard {
   receiveAttack(coordinate){
     const coordinateStringified = coordinate.toString();
     const positionValue = this.board.get(coordinateStringified);
-    switch(positionValue){
-      case SHIP_STATUS.HIT:
-      case SHIP_STATUS.MISSED:
-        throw new Error("Coordinate has already been attacked before");
-      case SHIP_STATUS.EMPTY:
-        this.board.set(coordinateStringified, SHIP_STATUS.MISSED);
-        break;
-      // There's a ship at this location
-      default:
-        this.ships_placed[positionValue].hit();
-        this.board.set(coordinateStringified, SHIP_STATUS.HIT);
-        if(this.ships_placed[positionValue].isSunk()){
-          this.ships_sunk.push(this.ships_placed[positionValue]);
+    const shipName = positionValue;
+    let shipIndex;
+    if(isHit(positionValue) || positionValue === SHIP_STATUS.MISSED || positionValue === SHIP_STATUS.SUNK){
+      throw new Error("Coordinate has already been attacked before");
+    } else if (positionValue === SHIP_STATUS.EMPTY){
+      this.board.set(coordinateStringified, SHIP_STATUS.MISSED);
+    // CASE: there is a ship at the location
+    } else {
+      this.ships_placed.forEach((obj, index) => {
+        if(obj.name === shipName){
+          shipIndex = index;
         }
+      })
+      console.log(this.ships_placed[shipIndex]);
+      this.ships_placed[shipIndex].hit();
+      this.board.set(coordinateStringified, createHitStatus(shipName));
+      if(this.ships_placed[shipIndex].isSunk()){
+        this.ships_sunk.push(this.ships_placed[shipIndex]);
+      }
     }
   }
 

@@ -8,12 +8,7 @@ export default class Ship {
     }
     this.length = length;
     this.numOfTimesHit = 0;
-    this.id = 0;
     this.name = name;
-  }
-
-  setID(newId){
-    this.id = newId;
   }
 
   hit(){

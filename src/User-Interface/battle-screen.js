@@ -59,14 +59,14 @@ function AIAttackDOM(){
     const gridStatus = enemy.gameboard.board.get(AIPlayerAttackedCoordinate.toString()) 
     if(gridStatus === SHIP_STATUS.MISSED){
       AiPlayerGridAttackedDOM.appendChild(missIcon);
-      statusMessage.innerText = 'AI Player missed their attack.';
+      statusMessage.innerText += ' AI Player missed their attack.';
     } else if(isHit(gridStatus)){
       const numberShipsSunkAfter = enemy.gameboard.ships_sunk.length;
       // in case one of the ships have been sunk
       if(numberShipsSunkAfter > numberShipsSunkBefore) {
         const shipSunk = enemy.gameboard.ships_sunk[numberShipsSunkAfter - 1].name;
         replaceHitWithSunkDOM(enemy, 1, shipSunk);
-        statusMessage.innerText = `AI Player has sunk the your ${shipSunk}.`;
+        statusMessage.innerText += ` AI Player has sunk the your ${shipSunk}.`;
         if(Game.isOver(enemy, player)){
           statusMessage.innerText = `AI Player has won. GG!`
           toggleNewGameButtonVisibility();
@@ -76,7 +76,7 @@ function AIAttackDOM(){
           AiPlayerGridAttackedDOM.firstChild.remove();
         }
         AiPlayerGridAttackedDOM.appendChild(hitIcon);
-        statusMessage.innerText = `AI Player's attack has landed.`;
+        statusMessage.innerText += ` AI Player's attack has landed.`;
       }
     }
     Game.toggleTurn();
@@ -110,18 +110,18 @@ function addEnemyWaterClickFunctionality(){
               if(numberShipsSunkAfter > numberShipsSunkBefore) {
                 const shipSunk = enemy.gameboard.ships_sunk[numberShipsSunkAfter - 1].name;
                 replaceHitWithSunkDOM(enemy, 2, shipSunk);
-                statusMessage.innerText = `You have sunk the enemy's ${shipSunk}`;
+                statusMessage.innerText = `You have sunk the enemy's ${shipSunk}.`;
                 if(Game.isOver(player, enemy)){
                   statusMessage.innerText = 'Congrats! You have defeated the AI!';
                   toggleNewGameButtonVisibility();
                 }
               } else {
                 grid.appendChild(hitIcon);
-                statusMessage.innerText = 'Nice! Your Attack Landed!'
+                statusMessage.innerText = 'Nice! Your attack landed!'
               }
             } else if (coordinateStatus === SHIP_STATUS.MISSED) {
               grid.appendChild(missIcon);
-              statusMessage.innerText = 'Your Attack Missed.'           
+              statusMessage.innerText = 'Your attack missed.'           
             }
             Game.toggleTurn();
             AIAttackDOM();

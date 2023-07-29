@@ -117,9 +117,8 @@ const placeShipScreen = (() => {
     let currentShip = allShips[currentShipIndex];
     renderPlaceStatusMessage(player, currentShip);
     allGridButtons.forEach(gridButton => {
+
       gridButton.addEventListener('click', () => {
-
-
         const rowNumber = parseInt(gridButton.getAttribute('data-x'), 10);
         const colNumber = parseInt(gridButton.getAttribute('data-y'), 10);
         const gridCoordinate = new Coordinates(rowNumber, colNumber);

@@ -98,6 +98,13 @@ body.start-screen, body.place-ships-screen, body.battleship-screen {
   background-color: darkred;;
 }
 
+.error-message {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-shadow: var(--mobile-text-shadow);
+}
 
 /* margins to separate the elements for start screen */ 
 .start-screen .container div:first-child {
@@ -146,7 +153,6 @@ body.start-screen, body.place-ships-screen, body.battleship-screen {
     padding-right: 10px;
   }
 }
-
 
 
 /* css for the place ships and attack ships screen */

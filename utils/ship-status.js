@@ -4,7 +4,7 @@ const SHIP_STATUS = {
   MISSED: 'Missed',
   // EXCEPTION: Grid Status for Hit is formatted as {Ship Name} - HIT
   HIT: 'Hit',
-  Sunk: 'Sunk'
+  SUNK: 'Sunk'
 }
 
 export default SHIP_STATUS;

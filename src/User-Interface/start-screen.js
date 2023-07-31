@@ -2,6 +2,7 @@ import { removeBodyChildren } from "./helper"
 /* import placeShipScreen from './place-ships' */
 import Game from "../game"
 import PubSub from "pubsub-js";
+import title from '../../assets/title.png'
 
 const startScreen = (() => {
 
@@ -45,6 +46,9 @@ const startScreen = (() => {
         </div>
       </div>
     `
+
+    const battleshipLogoImg = document.querySelector('.battleship-logo');
+    battleshipLogoImg.setAttribute('src', title);
     const startGameBtn = document.getElementById('start-game');
     document.addEventListener('keypress', (e) => {
       if (e.key === 'Enter'){

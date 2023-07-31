@@ -25,9 +25,8 @@ Some concepts I have to read more on:
 Features To Add:
 If I have more time in the future, some of the features I would add, would be:
 1. Status bar with animations - the present status bar only gives the status of the game when the player clicks on the enemy grid.
-   How I would solve it: Write the status string, and loop through each character, and slowly display the status string on the status bar. Make that loop into a promise and set a timeout each time it loops, so the user would be able to see
-   the status message moving.
-2. Smarter AI - Right now, the AI hits a random coordinate; the AI should hit coordinates around vertically or horizontally where there was a hit.
-  How I would solve: I create a stack and push the most recent coordinate that the AI hit. Check the coordinate to see if the ship is sunk, if the ship is sunk, then pop it off the stack. Otherwise, make the AI hit vertically or horizontally, and mark the direction in the stack so the AI can hit the other positions.
-3. Second human player with alternating boards
-4. Music - pretty self-explanatory, but music definitely brings a game to life
+<br>How I would solve it: Write the status string, and loop through each character, and slowly display the status string on the status bar. Make that loop into a promise and set a timeout each time it loops, so the user would be able to see the status message moving.
+3. Smarter AI - Right now, the AI hits a random coordinate; the AI should hit coordinates around vertically or horizontally where there was a hit.
+<br>How I would solve: I create a stack and push the most recent coordinate that the AI hit. Check the coordinate to see if the ship is sunk, if the ship is sunk, then pop it off the stack. Otherwise, make the AI hit vertically or horizontally, and mark the direction in the stack so the AI can hit the other positions.
+4. Second human player with alternating boards
+5. Music - pretty self-explanatory, but music definitely brings a game to life

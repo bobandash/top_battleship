@@ -1,7 +1,7 @@
 # top_battleship
 Background: This project was a simple battleship web application, done as a project for The Odin Project as the final project in the javascript module
 <br>URL to Play Battleship:
-<br>URL To TOP's project:
+<br>URL To TOP's project: https://www.theodinproject.com/lessons/node-path-javascript-battleship
 
 Concepts I Learned:
 The main purpose behind this project was to learn about TDD (Test Driven Development) by using the popular 3P package JEST for Javscript. Throughout the process of learning JEST, I made some notable syntax errors:

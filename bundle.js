@@ -344,7 +344,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* when ships are placed, they are tracked by their id */\r\nconst SHIP_STATUS = {\r\n  EMPTY: '',\r\n  MISSED: 'Missed',\r\n  // EXCEPTION: Grid Status for Hit is formatted as {Ship Name} - HIT\r\n  HIT: 'Hit',\r\n  Sunk: 'Sunk'\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SHIP_STATUS);\n\n//# sourceURL=webpack:///./utils/ship-status.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* when ships are placed, they are tracked by their id */\r\nconst SHIP_STATUS = {\r\n  EMPTY: '',\r\n  MISSED: 'Missed',\r\n  // EXCEPTION: Grid Status for Hit is formatted as {Ship Name} - HIT\r\n  HIT: 'Hit',\r\n  SUNK: 'Sunk'\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SHIP_STATUS);\n\n//# sourceURL=webpack:///./utils/ship-status.js?");
 
 /***/ }),
 

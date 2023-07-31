@@ -1,6 +1,6 @@
 # top_battleship
 Background: This project was a simple battleship web application, done as a project for The Odin Project as the final project in the javascript module
-<br>URL to Play Battleship:
+<br>URL to Play Battleship: https://bobandash.github.io/top_battleship/
 <br>URL To TOP's project: https://www.theodinproject.com/lessons/node-path-javascript-battleship
 
 Concepts I Learned:
